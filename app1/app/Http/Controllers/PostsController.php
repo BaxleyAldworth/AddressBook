@@ -36,12 +36,15 @@ class PostsController extends Controller
 		return redirect('posts');
 	}
 	
+	
+	//when user visists edit page
 	public function edit($id)
 	{
 		$post = Post::findOrFail($id);
 		return view('posts.edit', compact('post'));
 	}
 	
+	//when user hits update button
 	public function update($id, PostRequest $request)
 	{
 		$post = Post::findOrFail($id);

@@ -13,3 +13,7 @@ class Post extends Model
     'email'
     ];
 }
+
+
+//Good practice to explicitly define which attributes get assigned
+//This protects from dangerous user input

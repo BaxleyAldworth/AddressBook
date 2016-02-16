@@ -14,7 +14,7 @@
 |
 */
 
-Route::get('/', function () { //slash is the homepage, function() means we're inlining it
+//Route::get('/', function () { //slash is the homepage, function() means we're inlining it
 	
 	/*
 	Schema::table('entries', function($table)
@@ -35,9 +35,9 @@ Route::get('/', function () { //slash is the homepage, function() means we're in
 	$entry->save();
 	*/
 	 
-	return "Hello";
+	//return "My Address Book";
 	//return View::make('hello');
-});
+//});
 
 Route::get('/about', function(){
 	return view ('pages/about'); //look in resources/views/pages/about.blade.php | pages/about can also be pages.about
@@ -53,10 +53,17 @@ Route::get('/about', function(){
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
     //Route::get('posts', 'PostsController@index');
 	//Route::get('create', 'PostsController@create');
 	//Route::post('posts', 'PostsController@store');
 	//Route::get('posts/{id}/edit', 'PostsController@edit');
+	//Route::resource('posts', 'PostsController');
+//});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 	Route::resource('posts', 'PostsController');
+    Route::get('/home', 'PostsController@index');
+	Route::get('/', 'HomeController@index');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\PostRequest;
@@ -30,6 +31,11 @@ class PostsController extends Controller
 		//validation would be triggered before this runs
 		
 		//$input = Request::all();  <- no longer needed
+		
+		
+		//$post = new Post($request->all());
+	
+		//Auth::user()->posts()->save($post);
 		
 		Post::create($request->all());
 		
